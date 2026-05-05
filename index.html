@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alimentos la 5ta</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f5f5;
+}
+
+header {
+    background: linear-gradient(45deg, #ff4d4d, #ff9900);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background: #222;
+    flex-wrap: wrap;
+}
+nav a {
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+}
+nav a:hover {
+    background: #444;
+}
+
+
+section {
+    padding: 40px;
+    margin: 20px;
+    background: white;
+    border-radius: 12px;
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+}
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+.card:hover {
+    transform: scale(1.05);
+}
+.card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+.card button {
+    width: 100%;
+    padding: 10px;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+}
+
+#carrito {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #222;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 260px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.team {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+.member img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.faq {
+    margin-bottom: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🍔 Alimentos la 5ta</h1>
+</header>
+
+<nav>
+<a href="#menu">Menú</a>
+<a href="#delivery">Delivery</a>
+<a href="#ubicacion">Ubicación</a>
+<a href="#servicio">Servicio</a>
+<a href="#nosotros">Nosotros</a>
+<a href="#ayuda">Ayuda</a>
+</nav>
+
+<div id="carrito">
+<h3>🛒 Carrito</h3>
+<ul id="lista"></ul>
+<button onclick="enviarWhatsApp()">Pedir por WhatsApp</button>
+</div>
+
+<section id="menu">
+<h2>Menú</h2>
+<div class="menu">
+
+<div class="card">
+<img src="1.png">
+<h3>Lasaña</h3>
+<p>Elaborada con capas de pasta, carne molida, salsa de tomate, queso derretido y especias que le dan un sabor casero delicioso </p>
+<p>Q30.00</p>
+<button onclick="agregar('Lasaña',30.00)">Agregar</button>
+</div>
+
+<div class="card">
+<img src="2.png">
+<h3>Hamburguesa</h3>
+<p>Elaborada con pan suave, carne de res a la parrilla, queso, lechuga, tomate y salsas que la hacen jugosa</p>
+<p>Q15.00</p>
+<button onclick="agregar('Hamburguesa',15.00)">Agregar</button>
+</div>
+
+<div class="card">
+<img src="3.png">
+<h3>Chevere</h3>
+<p>Elaborada con pan esponjoso, salchicha, mostaza, ketchup y aderezos al gusto para un sabor clásico y rápido</p>
+<p>Q8.00</p>
+<button onclick="agregar('Chevere',8.00)">Agregar</button>
+</div>
+
+<div class="card">
+<img src="4.png">
+<h3>Nachos con queso y carne</h3>
+<p>Elaborados con totopos crujientes, queso derretido, carne sazonada y toppings que los vuelven completos y sabrosos</p>
+<p>Q12.00</p>
+<button onclick="agregar('Nachos con queso y carne',12.00)">Agregar</button>
+</div>
+
+<div class="card">
+<img src="5.png.jpg">
+<h3>Poporopos</h3>
+<p>elaborados con granos de maíz seleccionados calentados, condimentados con mantequilla y sal</p>
+<p>Q8.00</p>
+<button onclick="agregar('Poporopos',8.00)">Agregar</button>
+</div>
+
+<div class="card">
+<img src="6.png">
+<h3>Licuados</h3>
+<p>elaborados con fruta fresca y leche como base, combinados con banano, fresa o chocolate para crear bebidas cremosas</p>
+<p>Q10.00</p>
+<button onclick="agregar('Licuados',10.00)">Agregar</button>
+</div>
+
+</div>
+</section>
+
+<section id="delivery">
+<h2>Delivery</h2>
+<form>
+<input id="nombre" placeholder="Nombre del cliente">
+<input id="direccion" placeholder="Dirección">
+<input id="telefonoCliente" placeholder="Teléfono">
+<textarea placeholder="Detalles del pedido"></textarea>
+</form>
+</section>
+
+<section id="ubicacion">
+<h2>Ubicación</h2>
+<img src="7.png" style="width:100%; height:300px; object-fit:cover;">
+<p><strong>Dirección:</strong>
+2da avenida 5-18, Zona 1, El Naranjo, Guatemala, a 2 cuadras del parque central
+
+<p><strong>Referencias:</strong>
+Frente a “La Esquinita Market”, a un lado de la panadería “El Buen Horno” y cerca del parque municipal. Fácil de ubicar por su fachada color terracota con letrero iluminado en neón verde</p>
+
+<p><strong>Horarios:</strong>
+Lunes a viernes: 8:00 a.m. - 8:00 p.m.
+Sábados y domingos: 9:00 a.m. - 4:00 p.m.</p>
+</section>
+
+<section id="servicio">
+<h2>Servicio al Cliente</h2>
+<p><strong>Nombre:</strong> Madelyn Solorzano </p>
+<p><strong>Teléfono:</strong> 5947-2780 </p>
+<p><strong>Correo:</strong> Madelynsolorzano502@gmail.com </p>
+</section>
+
+<section id="nosotros">
+<h2>Nosotros</h2>
+
+<h3>Equipo</h3>
+<div class="team">
+<div class="member"><img height="150" src="foto3.png.jpeg" style="width: 150px;"><p>Madelyn Solorzano</p></div>
+<div class="member"><img height="150" src="foto5.png.jpeg" style="width: 150px;"><p>Eddison Ramirez</p></div>
+<div class="member"><img height="150" src="foto1.png.jpeg" style="width: 150px;"><p>David Roman</p></div>
+<div class="member"><img height="150" src="foto6.png.jpeg" style="width: 150px;"><p>Ricardo Sandoval</p></div>
+<div class="member"><img height="150" src="foto4.png.jpeg" style="width: 150px;"><p>Aylinn Serrano</p></div>
+<div class="member"><img height="150" src="foto2.png.jpeg" style="width: 150px;""><p>Daphne Tobar</p></div>
+</div>
+
+<h3>Misión</h3>
+<p>En Alimentos La 5ta, nuestra misión es ofrecer alimentos preparados de alta 
+calidad, incluyendo nachos, chéveres, lasañas, poporopos y licuados, 
+elaborados con ingredientes frescos, seguros y cuidadosamente seleccionados. 
+Nos comprometemos a satisfacer las necesidades y expectativas de nuestros 
+clientes mediante un servicio eficiente, amable y responsable, garantizando 
+una experiencia agradable que promueva la confianza, la fidelidad y el 
+bienestar de quienes nos prefieren. Asimismo, buscamos contribuir al 
+desarrollo económico de nuestra comunidad mediante prácticas responsables y 
+un trabajo comprometido. </p>
+
+<h3>Visión</h3>
+<p>Ser una empresa líder y reconocida en el sector de alimentos preparados a 
+nivel local y regional, destacándonos por la excelencia en la calidad, el sabor y 
+la presentación de nuestros productos. Aspiramos a consolidarnos como una 
+marca confiable e innovadora, ampliando continuamente nuestra oferta y 
+presencia en el mercado, sin perder nuestros principios de calidad, higiene y 
+buen servicio. Buscamos posicionarnos como la primera opción de nuestros 
+clientes, generando crecimiento sostenible y oportunidades de desarrollo para 
+nuestros colaboradores. </p>
+
+<h3>Elaboración</h3>
+<p>En nuestro local, cada platillo se elabora de manera detallada y calculada, garantizando el equilibrio adecuado entre sabor, textura y presentación. Aplicamos procesos de preparación estandarizados que aseguran consistencia en cada receta, sin perder la calidad y el carácter propio de nuestras comidas. Nos comprometemos estrictamente con la higiene en todas las etapas de la cocina, desde la manipulación de los ingredientes hasta el empaque final, cumpliendo con altos estándares de limpieza y seguridad alimentaria. Asimismo, utilizamos ingredientes frescos seleccionados diariamente, priorizando su calidad y buen estado, con el objetivo de ofrecer alimentos confiables, seguros y de excelente sabor para todos nuestros clientes.</p>
+</section>
+
+<section id="ayuda">
+<h2>Ayuda</h2>
+
+<div class="faq"><strong>¿No te a llegado tu pedido?</strong><p>Contamos con un tiempo aproximado de 20-25 minutos para finalizar la entrega, si pasado ese tiempo no lo has recibido, contacta al 5947-2780 y te daremos informacion sobre el proceso en el que se encuentra tu orden<p></div>
+<div class="faq"><strong>¿Colocaste una direccion equivocada?</strong><p>Puedes llamar al 5947-2780 durante los 10 minutos posteriores a la confirmacion de tu pedido e informarnos del error sin ningun problema, pasado ese tiempo podria agregarse algun recargo adicional</p></div>
+<div class="faq"><strong>¿Recibiste un menu incorrecto?</strong><p>Informanos al 5947-2780 especificando cual fue el error y te realizaremos el cambio lo mas pronto posible aplicando un 10% de descuento por nuestro error</p></div>
+<div class="faq"><strong>¿Problemas con el repartidor?</strong><p>Contamos con un control y reglamento estricto para todos los repartidores para garantizar una experiencia agradable desde el momento en el que recibes tu pedido, cualquier inconveniente puedes enviarlo al 5947-2780</p></div>
+<div class="faq"><strong>¿Problemas con la pagina?</strong><p>Tambien puedes realizar tu pedido al 5947-2780 y te atenderemos con gusto dentro de nuestro horario de trabajo</p></div>
+</section>
+
+<script>
+let carrito = [];
+
+function agregar(nombre, precio) {
+    carrito.push({nombre, precio});
+    mostrar();
+}
+
+function mostrar() {
+    let lista = document.getElementById("lista");
+    lista.innerHTML = "";
+    carrito.forEach(item => {
+        let li = document.createElement("li");
+        li.textContent = item.nombre + " Q" + item.precio;
+        lista.appendChild(li);
+    });
+}
+
+function enviarWhatsApp() {
+    let telefono = "50259472780";
+
+    let nombre = document.getElementById("nombre").value;
+    let direccion = document.getElementById("direccion").value;
+    let tel = document.getElementById("telefonoCliente").value;
+
+    let mensaje = "Pedido:%0A";
+
+    carrito.forEach(item => {
+        mensaje += "- " + item.nombre + " Q" + item.precio + "%0A";
+    });
+
+    mensaje += "%0ACliente: " + nombre;
+    mensaje += "%0ADirección: " + direccion;
+    mensaje += "%0ATeléfono: " + tel;
+
+    window.open("https://wa.me/" + telefono + "?text=" + mensaje, "_blank");
+}
+</script>
+
+</body>
+</html>
